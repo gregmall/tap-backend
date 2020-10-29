@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS spinaltap;
+
+CREATE TABLE spinaltap (
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  name TEXT NOT NULL,
+  image TEXT NOT NULL,
+  quote TEXT NOT NULL,
+  instrument TEXT NOT NULL
+  
+);
