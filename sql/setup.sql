@@ -5,6 +5,6 @@ CREATE TABLE spinaltap (
   name TEXT NOT NULL,
   image TEXT NOT NULL,
   quote TEXT NOT NULL,
-  instrument TEXT NOT NULL
+  role TEXT NOT NULL
   
 );

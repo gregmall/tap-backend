@@ -16,7 +16,7 @@ describe('tap-backend routes', () => {
         name: 'Steve',
         image: 'www.url.com',
         quote: 'Tap lives!',
-        instrument: 'guitar'
+        role: 'guitar'
 
       });
     expect(res.body).toEqual({
@@ -24,7 +24,7 @@ describe('tap-backend routes', () => {
       name: 'Steve',
       image: 'www.url.com',
       quote: 'Tap lives!',
-      instrument: 'guitar'
+      role: 'guitar'
         
     });
 
@@ -35,19 +35,19 @@ describe('tap-backend routes', () => {
         name: 'Steve', 
         image: 'www.url.com',
         quote: 'Tap lives!',
-        instrument: 'guitar'
+        role: 'guitar'
       },
       {
         name: 'Lars', 
         image: 'www.rock.com',
         quote: 'ROCK AND ROLL!',
-        instrument: 'bass'
+        role: 'bass'
       },
       {
         name: 'Benny', 
         image: 'www.page.com',
         quote: 'My girlfriend has 2 jobs',
-        instrument: 'drums'
+        role: 'drums'
       }
 
     ].map(character => SpinalTap.insert(character)));
