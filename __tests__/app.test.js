@@ -29,4 +29,37 @@ describe('tap-backend routes', () => {
     });
 
   });
+  it('gets all characters', async() => {
+    const characters = await Promise.all([
+      {
+        name: 'Steve', 
+        image: 'www.url.com',
+        quote: 'Tap lives!',
+        instrument: 'guitar'
+      },
+      {
+        name: 'Lars', 
+        image: 'www.rock.com',
+        quote: 'ROCK AND ROLL!',
+        instrument: 'bass'
+      },
+      {
+        name: 'Benny', 
+        image: 'www.page.com',
+        quote: 'My girlfriend has 2 jobs',
+        instrument: 'drums'
+      }
+
+    ].map(character => SpinalTap.insert(character)));
+
+    return request(app)
+      .get('/api/v1/characters')
+      .then(res => {
+        characters.forEach(character => {
+          expect(res.body).toContainEqual(character);
+        });
+      });
+  });
+
 });
+
