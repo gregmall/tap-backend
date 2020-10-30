@@ -61,5 +61,68 @@ describe('tap-backend routes', () => {
       });
   });
 
+  it('gets a character by id ', async() => {
+    const character = await SpinalTap.insert({
+      name: 'Steve',
+      image: 'www.url.com',
+      quote: 'Tap lives!',
+      role: 'guitar'
+
+    });
+    const response = await request(app)
+      .get(`/api/v1/characters/${character.id}`);
+
+    expect(response.body).toEqual(character);
+    
+  });
+
+  it('updates a character by id', async() => {
+    const character = await SpinalTap.insert({
+      name: 'Steve',
+      image: 'www.url.com',
+      quote: 'Tap lives!',
+      role: 'guitar'
+
+    });
+
+    return request(app)
+      .put(`/api/v1/characters/${character.id}`)
+      .send({
+
+        name: 'Steve',
+        image: 'www.url.com',
+        quote: 'Tap lives forever!!',
+        role: 'guitar, vocals'
+      })
+      .then(res => {
+        expect(res.body).toEqual({
+
+          id: expect.any(String),
+          name: 'Steve',
+          image: 'www.url.com',
+          quote: 'Tap lives forever!!',
+          role: 'guitar, vocals'
+
+        });
+      });
+  });
+
+  it('deletes a character by id', async() => {
+    const character = await SpinalTap.insert({
+     
+      name: 'Steve',
+      image: 'www.url.com',
+      quote: 'Tap lives!',
+      role: 'guitar'
+
+    });
+ 
+    const response = await request(app)
+      .delete(`/api/v1/characters/${character.id}`);
+    
+
+    expect(response.body).toEqual(character);
+  });
+
 });
 
